@@ -1,0 +1,4 @@
+target/
+# editor tooling (bacon-ls)
+.bacon-locations
+bacon-ls.log

@@ -1,0 +1,22 @@
+[package]
+name = "repro-task-handle"
+version = "0.0.0"
+description = "F1/F2: ActorTaskHandle::from_vtable is unsound (Miri)"
+edition.workspace = true
+publish.workspace = true
+license.workspace = true
+
+# No runtime features: only the task-handle code is exercised, so Miri does not
+# have to interpret Tokio or the link-section handler registry.
+[dependencies]
+factories = { workspace = true }
+critical-section = { workspace = true }
+
+[features]
+# Builds the Miri use-after-free probe. Opt-in, because once F1 is fixed the
+# probe must no longer compile, and that should not break the other targets.
+borrow-probe = []
+
+[[test]]
+name = "borrowed_handle_outlives_owner"
+required-features = ["borrow-probe"]
