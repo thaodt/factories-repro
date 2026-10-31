@@ -28,7 +28,7 @@ impl ActorTaskHandleVTable for Borrowed<'_> {
 #[test]
 #[cfg_attr(
     not(miri),
-    ignore = "executes UB on the pinned revision; run under Miri"
+    ignore = "executes UB on the pinned revision; run under miri"
 )]
 fn borrowed_handle_outlives_owner() {
     // No `unsafe` in caller code.

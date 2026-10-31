@@ -32,7 +32,7 @@ impl ActorTaskHandleVTable for Padded {
 #[test]
 #[cfg_attr(
     not(miri),
-    ignore = "executes UB on the pinned revision; run under Miri"
+    ignore = "executes UB on the pinned revision; run under miri"
 )]
 fn padded_inline_handle() {
     // Takes the inline-storage branch of `from_vtable`.

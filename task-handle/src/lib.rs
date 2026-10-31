@@ -6,7 +6,7 @@
 //!   `--features borrow-probe`.
 //! - `tests/padded_inline_handle.rs` (F2): uninitialized padding read as a pointer.
 //! - `tests/owned_handle_control.rs`: the same calls with a sound backend. Passes
-//!   under Miri, showing that the harness itself is clean.
+//!   under miri, showing that the harness itself is clean.
 //!
 //! The doctest below is the native, stable-toolchain signal for F1. It is the
 //! expected contract: a borrow that escapes its scope must be rejected by the

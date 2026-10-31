@@ -1,5 +1,5 @@
 [workspace]
-members = ["task-handle"]
+members = ["task-handle", "early-abort"]
 resolver = "3"
 
 [workspace.package]
@@ -12,6 +12,7 @@ license = "MIT"
 # `main` at the time of writing). See README.md for testing another revision.
 factories = { git = "https://github.com/deepslate-labs/factories", rev = "496923bccc3bcad6c84d27b9f037044e902b665c", default-features = false }
 
+tokio = { version = "1.52.0", default-features = false }
 # `factories_sync` expects the final binary to provide a critical-section
 # implementation when the `std` feature of factories is off.
 critical-section = { version = "1.2.0", features = ["std"] }

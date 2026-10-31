@@ -1,0 +1,15 @@
+[package]
+name = "repro-early-abort"
+version = "0.0.0"
+description = "F3: aborting an actor before its first poll leaves it Starting forever"
+edition.workspace = true
+publish.workspace = true
+license.workspace = true
+
+[dev-dependencies]
+factories = { workspace = true, features = ["derive", "full-runtime"] }
+# `rt-multi-thread` is required for factories to compile at all: its
+# `tokio-runtime` feature calls `tokio::task::block_in_place` without enabling
+# that tokio feature (see README, "Incidental findings"). The race test also
+# uses a multi-thread runtime; the other tests run current-thread.
+tokio = { workspace = true, features = ["rt", "rt-multi-thread", "macros", "sync", "time"] }
