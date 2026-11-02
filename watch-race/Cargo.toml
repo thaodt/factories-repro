@@ -1,0 +1,13 @@
+[package]
+name = "repro-watch-race"
+version = "0.0.0"
+description = "I3: a watch registered while the watched actor is dying never fires"
+edition.workspace = true
+publish.workspace = true
+license.workspace = true
+
+[dev-dependencies]
+factories = { workspace = true, features = ["derive", "full-runtime"] }
+# `rt-multi-thread` is required for factories to compile at all,
+# the stress test also needs a multi-thread runtime.
+tokio = { workspace = true, features = ["rt", "rt-multi-thread", "macros", "sync", "time"] }
